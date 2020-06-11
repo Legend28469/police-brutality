@@ -7,6 +7,7 @@ import SEO from "../components/seo"
 import Counter from "../components/counter"
 import Sidebar from "../components/sidebar"
 import styles from "../components/app.module.css"
+import VideoContainer from "../components/videoContainer"
 
 const IndexPage = () => {
   const [data, setData] = useState([])
@@ -48,6 +49,7 @@ const IndexPage = () => {
         <div className={styles.container}>
           <Sidebar data={states} />
           <Counter length={data.length} />
+          <VideoContainer data={data} />
         </div>
       ) : (
         ""

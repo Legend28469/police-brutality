@@ -67,7 +67,8 @@ const Sidebar = ({ data }) => {
 
         <p className={styles.actionText}>
           Whatever you want really, but in all seriousness the most powerful and
-          impactful thing you can do is <span class={styles.vote}>vote</span>{" "}
+          impactful thing you can do is{" "}
+          <span className={styles.vote}>vote</span>{" "}
         </p>
       </div>
 
