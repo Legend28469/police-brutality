@@ -1,0 +1,41 @@
+.counter {
+  margin-top: 4rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.count {
+  display: inline;
+  color: #ff0000;
+  font-family: "Balsamiq Sans", sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.text {
+  display: inline;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out 3s forwards;
+  line-height: 1.5;
+}
+
+.voteText {
+  color: #7cfc00;
+  font-family: "Balsamiq Sans", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 992px) {
+  .counter {
+    text-align: left;
+  }
+}

@@ -1,0 +1,77 @@
+.container {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .container {
+    display: block;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 330px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    padding: 70px 20px 0;
+  }
+
+  .title {
+    text-transform: capitalize;
+    font-family: "Balsamiq Sans", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .graph {
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+  }
+
+  .action {
+    margin-top: 2rem;
+  }
+
+  .actionTitle {
+    font-family: "Balsamiq Sans", sans-serif;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 3rem;
+  }
+
+  .actionText {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.35rem;
+    line-height: 1.5;
+  }
+
+  .vote {
+    color: #7cfc00;
+    font-family: "Balsamiq Sans", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .credit {
+    position: absolute;
+    bottom: 120px;
+    left: 20px;
+  }
+
+  .space {
+    margin: 1.5rem 0;
+  }
+
+  .smallText {
+    color: rgba(255, 255, 255, 0.6);
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  .smallText:hover {
+    color: #ffffff;
+  }
+}

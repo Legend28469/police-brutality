@@ -1,0 +1,47 @@
+.title {
+  font-family: "Balsamiq Sans", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.cross {
+  color: #ff0000;
+  position: relative;
+}
+
+@media (min-width: 992px) {
+  .title {
+    text-align: left;
+  }
+
+  .cross {
+    margin: 0;
+  }
+
+  .cross::before {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    width: 50%;
+    height: 5px;
+    background-color: #ff0000;
+    transform: rotate(-45deg) translateX(-50%);
+    transform-origin: 15%;
+    opacity: 0.5;
+  }
+
+  .cross::after {
+    content: "";
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    width: 50%;
+    height: 5px;
+    background-color: #ff0000;
+    transform: rotate(45deg) translateX(-50%);
+    transform-origin: 15%;
+    opacity: 0.5;
+  }
+}
