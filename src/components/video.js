@@ -31,11 +31,6 @@ const Video = ({ data }) => {
           May 5, 2014
         </a>
       </blockquote>{" "}
-      <script
-        async
-        src="https://platform.twitter.com/widgets.js"
-        charSet="utf-8"
-      ></script>
     </div>
   )
 }
