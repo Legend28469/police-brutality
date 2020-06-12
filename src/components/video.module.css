@@ -19,3 +19,9 @@
 .date {
   margin-bottom: 1rem;
 }
+
+.video {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

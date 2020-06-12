@@ -1,8 +1,67 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styles from "./video.module.css"
+import TweetEmbed from "react-tweet-embed"
+// import InstagramEmbed from "react-instagram-embed"
+import YouTube from "react-youtube"
+
+function debounce(fn, ms) {
+  let timer
+
+  return () => {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      timer = null
+
+      fn.apply(this, arguments)
+    }, ms)
+  }
+}
 
 const Video = ({ data }) => {
   const { name, city, state, links, date_text } = data
+
+  const [dimensions, setDimensions] = useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  })
+
+  const [link, setLink] = useState("")
+  const [videoHost, setVideoHost] = useState("")
+
+  useEffect(() => {
+    let vh = dimensions.height * 0.01
+    document.documentElement.style.setProperty("--vh", `${vh}px`)
+
+    const debouncedHandleResize = debounce(function handleResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      })
+    }, 1000)
+
+    window.addEventListener("resize", debouncedHandleResize)
+
+    for (let i = 0; i < links.length; i++) {
+      if (links[i].includes("twitter")) {
+        let id = links[i].split("/")
+        let stripped = id[id.length - 1].split("?")
+        setLink(stripped[0])
+        setVideoHost("Twitter")
+        break
+      }
+
+      if (links[i].includes("youtu.be") || links[i].includes("youtube")) {
+        let id = links[i].split("/")
+        setLink(id[id.length - 1])
+        setVideoHost("Youtube")
+        break
+      }
+    }
+
+    return () => {
+      window.removeEventListener("resize", debouncedHandleResize)
+    }
+  }, [dimensions.height, links])
 
   return (
     <div className={styles.container}>
@@ -11,26 +70,40 @@ const Video = ({ data }) => {
         {city}, {state}
       </h6>
       <h5 className={styles.date}>{date_text}</h5>
-      <blockquote className="twitter-tweet">
-        <p lang="en" dir="ltr">
-          Sunsets don&#39;t get much better than this one over{" "}
-          <a href="https://twitter.com/GrandTetonNPS?ref_src=twsrc%5Etfw">
-            @GrandTetonNPS
-          </a>
-          .{" "}
-          <a href="https://twitter.com/hashtag/nature?src=hash&amp;ref_src=twsrc%5Etfw">
-            #nature
-          </a>{" "}
-          <a href="https://twitter.com/hashtag/sunset?src=hash&amp;ref_src=twsrc%5Etfw">
-            #sunset
-          </a>{" "}
-          <a href="http://t.co/YuKy2rcjyU">pic.twitter.com/YuKy2rcjyU</a>
-        </p>
-        &mdash; US Department of the Interior (@Interior){" "}
-        <a href="https://twitter.com/Interior/status/463440424141459456?ref_src=twsrc%5Etfw">
-          May 5, 2014
-        </a>
-      </blockquote>{" "}
+
+      <div className={styles.video}>
+        {dimensions.width >= 992 &&
+        link.length > 0 &&
+        videoHost === "Twitter" ? (
+          <TweetEmbed id={link} options={{ theme: "dark", width: "350" }} />
+        ) : (
+          ""
+        )}
+
+        {dimensions.width < 992 &&
+        link.length > 0 &&
+        videoHost === "Twitter" ? (
+          <TweetEmbed id={link} options={{ theme: "dark", width: "250" }} />
+        ) : (
+          ""
+        )}
+
+        {dimensions.width >= 992 &&
+        link.length > 0 &&
+        videoHost === "Youtube" ? (
+          <YouTube videoId={link} opts={{ width: "350" }} />
+        ) : (
+          ""
+        )}
+
+        {dimensions.width < 992 &&
+        link.length > 0 &&
+        videoHost === "Youtube" ? (
+          <YouTube videoId={link} opts={{ width: "250" }} />
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   )
 }

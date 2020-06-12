@@ -21,7 +21,11 @@
     "react-chartjs-2": "^2.9.0",
     "react-countup": "^4.3.3",
     "react-dom": "^16.12.0",
-    "react-helmet": "^6.0.0"
+    "react-helmet": "^6.0.0",
+    "react-tweet-embed": "^1.2.2",
+    "react-twitter-embed": "^3.0.3",
+    "react-twitter-widgets": "^1.9.5",
+    "react-youtube": "^7.11.2"
   },
   "devDependencies": {
     "prettier": "2.0.5"

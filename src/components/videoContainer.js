@@ -5,9 +5,9 @@ import Video from "./video"
 const VideoContainer = ({ data }) => {
   return (
     <div className={styles.container}>
-      {data.map(incident => (
-        <Video key={incident.id} data={incident} />
-      ))}
+      {data.map(incident => {
+        return <Video key={incident.id} data={incident} />
+      })}
     </div>
   )
 }
