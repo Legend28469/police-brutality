@@ -1,5 +1,6 @@
 import React from "react"
 import { Bar, defaults } from "react-chartjs-2"
+import { OutboundLink } from "gatsby-plugin-gtag"
 import styles from "./sidebar.module.css"
 
 const Sidebar = ({ data }) => {
@@ -75,36 +76,36 @@ const Sidebar = ({ data }) => {
 
       <div className={styles.credit}>
         <p>
-          <a
+          <OutboundLink
             className={styles.smallText}
             href="https://johnathanbrown.me"
             target="_blank"
             rel="noreferrer"
           >
             I'm looking for work. Hire me!
-          </a>
+          </OutboundLink>
         </p>
         <div className={styles.space}></div>
         <p>
-          <a
+          <OutboundLink
             className={styles.smallText}
             href="https://dribbble.com/shots/11936149-What-s-Next-2020"
             target="_blank"
             rel="noreferrer"
           >
             Design inspired by Elad Naider
-          </a>
+          </OutboundLink>
         </p>
         <div className={styles.space}></div>
         <p>
-          <a
+          <OutboundLink
             className={styles.smallText}
             href="https://www.pexels.com/photo/man-wearing-black-vest-near-crowded-people-2348817/"
             target="_blank"
             rel="noreferrer"
           >
             Photo by Aloïs Moubax from Pexels
-          </a>
+          </OutboundLink>
         </p>
       </div>
     </div>
