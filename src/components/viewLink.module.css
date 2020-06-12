@@ -1,5 +1,6 @@
 .viewLink {
   text-align: center;
+  margin: 1rem 0;
 }
 
 .link {
@@ -10,4 +11,10 @@
   border-radius: 15px;
   font-family: "Montserrat", sans-serif;
   border: 2px solid #ffffff;
+}
+
+@media (min-width: 992px) {
+  .viewLink {
+    margin: 0;
+  }
 }
