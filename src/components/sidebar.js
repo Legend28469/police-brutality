@@ -16,6 +16,7 @@ const Sidebar = ({ data }) => {
 
   return (
     <div className={styles.container}>
+      {console.log(states)}
       <div className={styles.title}>Break down</div>
 
       <div className={styles.graph}>

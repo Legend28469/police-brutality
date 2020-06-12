@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
 import styles from "./video.module.css"
 import TweetEmbed from "react-tweet-embed"
-// import InstagramEmbed from "react-instagram-embed"
 import YouTube from "react-youtube"
+import ViewLink from "./viewLink"
 
 function debounce(fn, ms) {
   let timer
@@ -17,7 +17,7 @@ function debounce(fn, ms) {
   }
 }
 
-const Video = ({ data }) => {
+const Video = ({ data, wait }) => {
   const { name, city, state, links, date_text } = data
 
   const [dimensions, setDimensions] = useState({
@@ -27,10 +27,15 @@ const Video = ({ data }) => {
 
   const [link, setLink] = useState("")
   const [videoHost, setVideoHost] = useState("")
+  const [hidden, setHidden] = useState(true)
 
   useEffect(() => {
     let vh = dimensions.height * 0.01
     document.documentElement.style.setProperty("--vh", `${vh}px`)
+
+    setTimeout(function () {
+      setHidden(false)
+    }, wait)
 
     const debouncedHandleResize = debounce(function handleResize() {
       setDimensions({
@@ -61,10 +66,14 @@ const Video = ({ data }) => {
     return () => {
       window.removeEventListener("resize", debouncedHandleResize)
     }
-  }, [dimensions.height, links])
+  }, [dimensions.height, links, wait])
 
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} ${
+        hidden ? styles.hidden : styles.visible
+      }`}
+    >
       <h3 className={styles.title}>{name}</h3>
       <h6 className={styles.location}>
         {city}, {state}
@@ -75,7 +84,9 @@ const Video = ({ data }) => {
         {dimensions.width >= 992 &&
         link.length > 0 &&
         videoHost === "Twitter" ? (
-          <TweetEmbed id={link} options={{ theme: "dark", width: "350" }} />
+          <>
+            <TweetEmbed id={link} options={{ theme: "dark", width: "350" }} />
+          </>
         ) : (
           ""
         )}
@@ -103,6 +114,8 @@ const Video = ({ data }) => {
         ) : (
           ""
         )}
+
+        {link.length === 0 ? <ViewLink link={links[0]} /> : ""}
       </div>
     </div>
   )
