@@ -41,9 +41,6 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      {/* {console.log("Data:", data)}
-      {console.log("States: ", states)} */}
-
       <SEO title="Police Brutality 2020" />
       {data.length > 0 ? (
         <div className={styles.container}>
